@@ -16,7 +16,7 @@ values: any;
   }
 
   register() {
-    this.registerToggle = !this.registerToggle;
+    this.registerToggle = true;
   }
 
   getValues() {
@@ -27,5 +27,9 @@ values: any;
     error => {
       console.log(error);
     });
+  }
+
+  cancelRegisterMode(registerMoe: boolean) {
+    this.registerToggle = registerMoe;
   }
 }
