@@ -4,50 +4,22 @@ using DatingApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181009053444_extended")]
+    partial class extended
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.2-rtm-30932")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DatingApp.API.Models.AssignTask", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EmployeeEmpNo");
-
-                    b.Property<int>("TaskNo");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EmployeeEmpNo");
-
-                    b.HasIndex("TaskNo");
-
-                    b.ToTable("AssignTasks");
-                });
-
-            modelBuilder.Entity("DatingApp.API.Models.Employee", b =>
-                {
-                    b.Property<int>("EmpNo");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("EmpNo");
-
-                    b.ToTable("Employees");
-                });
 
             modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
@@ -70,19 +42,6 @@ namespace DatingApp.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Photos");
-                });
-
-            modelBuilder.Entity("DatingApp.API.Models.Task", b =>
-                {
-                    b.Property<int>("No")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("No");
-
-                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("DatingApp.API.Models.User", b =>
@@ -133,19 +92,6 @@ namespace DatingApp.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
-                });
-
-            modelBuilder.Entity("DatingApp.API.Models.AssignTask", b =>
-                {
-                    b.HasOne("DatingApp.API.Models.Employee", "Employee")
-                        .WithMany("Tasks")
-                        .HasForeignKey("EmployeeEmpNo")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("DatingApp.API.Models.Task", "Task")
-                        .WithMany("Employee")
-                        .HasForeignKey("TaskNo")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
