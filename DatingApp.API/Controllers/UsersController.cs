@@ -15,9 +15,10 @@ namespace DatingApp.API.Controllers
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
-        public UsersController(IDatingRepository repo)
+        public UsersController(IDatingRepository repo ,IMapper mapper)
         {
             _repo = repo;
+            _mapper = mapper;
 
         }
 
@@ -25,15 +26,15 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _repo.GetUsers();
-           // var userToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
-            return Ok(users);
+            var userToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+            return Ok(userToReturn);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
-           // var userToReturn = _mapper.Map<UserForDetailsDto>(user);
-            return Ok(user);
+            var userToReturn = _mapper.Map<UserForDetailsDto>(user);
+            return Ok(userToReturn);
 
         }
     }
