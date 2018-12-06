@@ -23,6 +23,7 @@ import { MemberDetailsComponent } from './members/member-details/member-details.
 import { MemberDetailResolver } from '../_resolvers/member-detail.resolver';
 import { MemberListResolver } from '../_resolvers/member-list.resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { PaginationModule } from 'ngx-bootstrap';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -48,6 +49,7 @@ export function tokenGetter() {
       RouterModule.forRoot(appRoutes),
       TabsModule.forRoot(),
       NgxGalleryModule,
+      PaginationModule.forRoot(),
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,

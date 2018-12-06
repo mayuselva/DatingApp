@@ -5,3 +5,16 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+      <pagination [boundaryLinks]="true" 
+      [totalItems]="pagination.totalItems"
+      [itemsPerPage]="pagination.itemsPerPage"
+      (pageChanged)="pageChanged($event)"
+      [(ngModel)]="pagination.currentPage"
+        >
+      </pagination>
+  </div>
+  
+</div>
