@@ -20,7 +20,7 @@ values: any;
   }
 
   getValues() {
-    this.http.get('http://localhost:5000/api/values').subscribe(response => {
+    this.http.get('http://192.168.1.20:5000/api/values').subscribe(response => {
       this.values = response;
       console.log(this.values);
     },
