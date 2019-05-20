@@ -13,7 +13,7 @@ using System.IdentityModel.Tokens.Jwt;
 namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
-
+    [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
@@ -26,7 +26,7 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
 
             //validate request
